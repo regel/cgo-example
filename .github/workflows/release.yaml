@@ -1,23 +1,26 @@
-name: release
+name: Release
+
 on:
-  push:
-    tags:
-      - v*
+  release:
+    types: [created]
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
         with:
-          submodules: 'true'
-      - run: git fetch --prune --unshallow
-      - name: setup dependencies
-        uses: actions/setup-go@v2
-      - name: release dry run
-        run: make release-dry-run
-      - name: setup release environment
+          go-version: 1.20
+
+      - name: Set up environment
         run: |-
-          echo 'GITHUB_TOKEN=${{secrets.GORELEASER_ACCESS_TOKEN}}' > .release-env
-      - name: release publish
+          echo 'GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}' > .release-env
+
+      - name: Run GoReleaser
         run: make release
