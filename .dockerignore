@@ -1,0 +1,5 @@
+**
+!*.go
+!*.cpp
+!go.mod
+!go.sum
