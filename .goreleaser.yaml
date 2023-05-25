@@ -104,3 +104,5 @@ brews:
     tap:
       owner: regel
       name: homebrew-cgo-example
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+
