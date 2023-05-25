@@ -94,3 +94,13 @@ gomod:
 # Feel free to remove those if you don't want/use them.
 # yaml-language-server: $schema=https://goreleaser.com/static/schema.json
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
+
+
+# Check https://goreleaser.com/customization/homebrew/
+brews:
+  - homepage: 'https://github.com/regel/homebrew-cgo-example'
+    description: 'Example binary distribution using homebrew.'
+    folder: Formula
+    tap:
+      owner: regel
+      name: homebrew-cgo-example
